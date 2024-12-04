@@ -1,0 +1,506 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+    background: none !important;
+}
+
+#reportMenu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: none;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(18, 18, 24, 0.98), rgba(24, 24, 32, 0.98));
+    border: 1px solid rgba(83, 92, 104, 0.3);
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.menu-header {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(83, 92, 104, 0.3);
+}
+
+.menu-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    background: linear-gradient(45deg, #fff, #ccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.menu-header p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: rgba(30, 30, 38, 0.95);
+    border: 1px solid rgba(83, 92, 104, 0.3);
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input:focus, textarea:focus {
+    background: rgba(35, 35, 45, 0.95);
+    border-color: rgba(116, 125, 140, 0.4);
+}
+
+textarea {
+    height: 120px;
+    resize: none;
+}
+
+textarea#reportDescription {
+    width: 100%;
+    min-height: 150px;
+    max-height: 300px;
+    resize: vertical;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: rgba(30, 30, 38, 0.95);
+    border: 1px solid rgba(83, 92, 104, 0.3);
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+    outline: none;
+    overflow-y: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+textarea#reportDescription:focus {
+    background: rgba(35, 35, 45, 0.95);
+    border-color: rgba(116, 125, 140, 0.4);
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#submitReport {
+    background: #00C853;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+#submitReport:hover {
+    background: #00E676;
+}
+
+.report-item {
+    position: relative;
+    background: rgba(25, 25, 32, 0.95);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(83, 92, 104, 0.3);
+    transition: all 0.3s ease;
+    transform-origin: center;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.report-item:hover {
+    background: rgba(30, 30, 38, 0.98);
+    transform: translateY(-2px);
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.report-header span {
+    font-size: 14px;
+}
+
+.report-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(30, 30, 38, 0.6);
+    border-radius: 8px;
+}
+
+.report-player {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 6px 12px;
+    background: rgba(45, 45, 55, 0.8);
+    border-radius: 4px;
+    letter-spacing: 0.2px;
+}
+
+.report-time {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-style: italic;
+}
+
+.report-reason {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 15px 0;
+    padding: 12px 16px;
+    background: linear-gradient(90deg, rgba(45, 45, 55, 0.9), rgba(35, 35, 45, 0.8));
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+}
+
+.report-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(20, 20, 28, 0.95);
+    border: 1px solid rgba(83, 92, 104, 0.2);
+    max-height: 300px;
+    overflow-y: auto;
+    contain: content;
+}
+
+.report-status {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(20, 20, 28, 0.95);
+}
+
+.status-pending {
+    color: #FFA000;
+    border: 1px solid rgba(255, 160, 0, 0.3);
+}
+
+.status-inprogress {
+    color: #2196F3;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.status-resolved {
+    color: #00C853;
+    border: 1px solid rgba(0, 200, 83, 0.3);
+}
+
+.report-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.report-actions button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 80px;
+    transition: all 0.2s ease-out;
+    transform: translateZ(0);
+}
+
+.btn-delete {
+    background: rgba(244, 67, 54, 0.9);
+}
+
+.btn-delete:hover {
+    background: #f44336;
+}
+
+.btn-take {
+    background: rgba(255, 152, 0, 0.9);
+}
+
+.btn-take:hover {
+    background: #ff9800;
+}
+
+.btn-resolve {
+    background: rgba(76, 175, 80, 0.9);
+}
+
+.btn-resolve:hover {
+    background: #4caf50;
+}
+
+.btn-delete.confirming {
+    background: #d32f2f;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.report-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(30, 30, 38, 0.6);
+    border-radius: 8px;
+}
+
+#reportsList {
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    will-change: transform;
+    contain: content;
+    margin-top: 20px;
+    padding-right: 10px;
+}
+
+#reportsList::-webkit-scrollbar {
+    width: 6px;
+}
+
+#reportsList::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+#reportsList::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+#reportsList::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.report-item.deleting {
+    animation: deleteAnimation 0.5s ease forwards;
+}
+
+@keyframes deleteAnimation {
+    0% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateX(-30px) scale(0.95);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%) scale(0.9);
+        margin-bottom: 0;
+        padding: 0;
+        height: 0;
+    }
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 18px;
+    padding: 0;
+    line-height: 1;
+}
+
+.close-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.report-info i, .report-reason i, .report-description i {
+    margin-right: 8px;
+    opacity: 0.8;
+}
+
+.report-actions button i {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.status-pending i {
+    color: #ffd700;
+}
+
+.status-inprogress i {
+    color: #3498db;
+}
+
+.status-resolved i {
+    color: #2ecc71;
+}
+
+.btn-take i {
+    color: #f39c12;
+}
+
+.btn-resolve i {
+    color: #2ecc71;
+}
+
+.btn-delete i {
+    color: #e74c3c;
+}
+
+.report-content {
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    margin: 10px 0;
+    contain: content;
+}
+
+.report-info i {
+    width: 16px;
+    text-align: center;
+    margin-right: 8px;
+}
+
+.report-content i {
+    opacity: 0.7;
+    width: 16px;
+    text-align: center;
+    margin-right: 8px;
+}
+
+.report-section {
+    margin-bottom: 10px;
+}
+
+.report-section:last-child {
+    margin-bottom: 0;
+}
+
+.report-label {
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.report-reason, .report-description {
+    color: white;
+    font-size: 14px;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.report-description {
+    white-space: pre-wrap;
+}
+
+.empty-reports {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+.empty-message {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+}
+
+.empty-message span {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.empty-message .empty-subtitle {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 900px) {
+    #reportMenu {
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
