@@ -1,5 +1,10 @@
 # ESX Reports System
 
+![image](https://github.com/user-attachments/assets/a84f47ae-282a-43ea-ab39-ba16f83137a7)
+![image](https://github.com/user-attachments/assets/bdafcf4c-5e8f-4ccf-bb76-00fd7147d4c3)
+
+
+
 A modern, optimized reporting system for FiveM ESX servers with a simple UI and advanced features.
 
 ## Features
